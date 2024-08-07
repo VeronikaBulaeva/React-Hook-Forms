@@ -1,4 +1,4 @@
-import { styled, TextField } from '@mui/material';
+import { styled } from '@mui/material';
 
 export const FormBox = styled('div')`
   box-shadow: ${({ theme }) => theme.palette.shadow.shadow};
@@ -6,6 +6,10 @@ export const FormBox = styled('div')`
   max-width: max-content;
   margin: 16px;
   background-color: ${({ theme }) => theme.palette.background.default};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    max-width: 100%;
+  }
 `;
 
 export const GridContainer = styled('div')`
@@ -13,20 +17,19 @@ export const GridContainer = styled('div')`
   gap: 16px;
   align-items: flex-start;
   margin: 16px;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    justify-content: center;
+  }
 `;
 
 export const FlexBox = styled('div')`
   display: flex;
   gap: 16px;
   justify-content: flex-start;
-`;
 
-export const InputBox = styled(TextField)`
-  color: ${({ theme }) => theme.palette.secondary.light};
-  border-radius: 4px;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.palette.secondary.dark};
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    display: grid;
   }
 `;
 

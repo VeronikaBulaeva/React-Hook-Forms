@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { FormControl, FormHelperText, TextField } from '@mui/material';
-import { Controller } from 'react-hook-form';
-import { InputType } from '@/components/FormInputs/TextInput';
+import { Controller, useFormContext } from 'react-hook-form';
+import { InputType } from '@/components/types.ts';
 import { formatPhoneNumber } from '@/components/PhoneInput/PhoneMask';
 
-const PhoneInput: FC<InputType> = ({ control, name, label, required, placeholder, disabled }) => {
+const PhoneInput: FC<InputType> = ({ name, label, required, placeholder, disabled }) => {
+  const { control } = useFormContext();
+
   return (
     <Controller
       name={name}

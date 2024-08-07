@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import { Autocomplete, FormControl, FormHelperText, TextField } from '@mui/material';
-import { InputType } from '@/components/FormInputs/TextInput';
-import { Controller } from 'react-hook-form';
+import { InputType } from '@/components/types.ts';
+import { Controller, useFormContext } from 'react-hook-form';
 
-const SkillSelect: FC<InputType> = ({ control, name, placeholder, label, required, disabled }) => {
+const SkillSelect: FC<InputType> = ({ name, placeholder, label, required, disabled }) => {
+  const { control } = useFormContext();
+
   return (
     <Controller
       name={name}
@@ -13,11 +15,11 @@ const SkillSelect: FC<InputType> = ({ control, name, placeholder, label, require
           <Autocomplete
             multiple
             limitTags={3}
-            id="skillsLabel"
             options={Skills}
             sx={{ maxWidth: '500px' }}
             filterSelectedOptions
             disabled={disabled}
+            autoFocus={false}
             onChange={(_event: unknown, item: string[]) => {
               onChange(item);
             }}

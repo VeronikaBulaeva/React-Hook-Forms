@@ -1,18 +1,11 @@
 import { FC } from 'react';
 import { FormControl, FormHelperText, TextField } from '@mui/material';
-import { Control, Controller } from 'react-hook-form';
-import { FormFields } from '@/components/ReactForm';
+import { Controller, useFormContext } from 'react-hook-form';
+import { InputType } from '@/components/types.ts';
 
-export interface InputType {
-  label: string;
-  name: keyof FormFields;
-  placeholder: string;
-  control: Control<FormFields>;
-  required: boolean;
-  disabled: boolean;
-}
+const TextInput: FC<InputType> = ({ name, placeholder, label, required, disabled }) => {
+  const { control } = useFormContext();
 
-const TextInput: FC<InputType> = ({ control, name, placeholder, label, required, disabled }) => {
   return (
     <Controller
       name={name}

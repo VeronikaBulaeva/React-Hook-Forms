@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import { Autocomplete, FormControl, FormHelperText, TextField } from '@mui/material';
-import { InputType } from '@/components/FormInputs/TextInput';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
+import { InputType } from '@/components/types.ts';
 
-const AutocompleteRole: FC<InputType> = ({ control, name, placeholder, label, required, disabled }) => {
+const AutocompleteRole: FC<InputType> = ({ name, placeholder, label, required, disabled }) => {
+  const { control } = useFormContext();
+
   return (
     <Controller
       name={name}
@@ -12,7 +14,6 @@ const AutocompleteRole: FC<InputType> = ({ control, name, placeholder, label, re
         <FormControl>
           <Autocomplete
             disablePortal
-            id="rolesLabel"
             options={Roles}
             sx={{ maxWidth: '500px' }}
             disabled={disabled}
